@@ -2066,9 +2066,9 @@ inline id performOptionalSelector(id obj, SEL sel) {
 
 #ifdef _MSC_VER
 #pragma warning(push)
-#pragma warning(                                                               \
-    disable : 4180) // We attempt to stream a function (address) by const&,
-                    // which MSVC complains about but is harmless
+#pragma warning(disable                                                        \
+                : 4180) // We attempt to stream a function (address) by const&,
+                        // which MSVC complains about but is harmless
 #endif
 
 namespace Catch {
@@ -2665,8 +2665,8 @@ struct StringMaker<
 #pragma warning(disable : 4018) // more "signed/unsigned mismatch"
 #pragma warning(disable : 4312) // Converting int to T* using reinterpret_cast
                                 // (issue on x64 platform)
-#pragma warning(                                                               \
-    disable : 4180) // qualifier applied to function type has no meaning
+#pragma warning(disable                                                        \
+                : 4180) // qualifier applied to function type has no meaning
 #pragma warning(disable : 4800) // Forcing result to true or false
 #endif
 
@@ -4964,9 +4964,9 @@ namespace Catch {
 template <typename T> class Option {
 public:
   Option() : nullableValue(nullptr) {}
-  Option(T const &_value) : nullableValue(new(storage) T(_value)) {}
+  Option(T const &_value) : nullableValue(new (storage) T(_value)) {}
   Option(Option const &_other)
-      : nullableValue(_other ? new(storage) T(*_other) : nullptr) {}
+      : nullableValue(_other ? new (storage) T(*_other) : nullptr) {}
 
   ~Option() { reset(); }
 
@@ -14155,9 +14155,9 @@ int Session::runInternal() {
     // Note that on unices only the lower 8 bits are usually used, clamping
     // the return value to 255 prevents false negative when some multiple
     // of 256 tests has failed
-    return (std::min)(
-        MaxExitCode,
-        (std::max)(totals.error, static_cast<int>(totals.assertions.failed)));
+    return (std::min)(MaxExitCode,
+                      (std::max)(totals.error,
+                                 static_cast<int>(totals.assertions.failed)));
   }
 #if !defined(CATCH_CONFIG_DISABLE_EXCEPTIONS)
   catch (std::exception &ex) {
@@ -16683,8 +16683,8 @@ CATCH_REGISTER_REPORTER("compact", CompactReporter)
 
 #if defined(_MSC_VER)
 #pragma warning(push)
-#pragma warning(                                                               \
-    disable : 4061) // Not all labels are EXPLICITLY handled in switch
+#pragma warning(disable                                                        \
+                : 4061) // Not all labels are EXPLICITLY handled in switch
   // Note that 4062 (not all labels are handled and default is missing) is
   // enabled
 #endif
