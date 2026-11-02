@@ -18,7 +18,7 @@ repos:
       types: [text]
       files: '\.(cpp|cxx|c|h|hpp|hxx|txx)$'
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.17.2
+    rev: v0.17.3
     hooks:
       - id: ruff-check # Run the linter.
         args: [ --fix ]
